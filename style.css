@@ -1,0 +1,234 @@
+@font-face {
+    font-family: "Digital 7";
+    src: url('fonts/digital-7.ttf');
+    src: url('fonts/digital-7.ttf') format('truetype')
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    background: linear-gradient(135deg, rgb(2, 2, 41), rgb(3, 11, 80));
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Switch button styling */
+
+#switch-btn {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+  }
+
+#switch-btn::before, #switch-btn::after {
+    font-size: 1.2rem;
+    margin: 0 2px;
+    color: white;
+}
+
+#switch-btn::before {
+    content: "\f017";
+    font-family: "Font Awesome 5 Free";
+}
+
+#switch-btn::after {
+    content: var(--after-content);
+    font-size: 1.5rem;
+    font-family: "Digital 7", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: red;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+
+/* Analogue clock styling */  
+
+.analog-clock {
+    display: inline;
+    width: 500px;
+    height: 500px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 10px solid white;
+    position: relative;
+}
+
+.hand {
+    position: absolute;
+    width: 50%;
+    height: 20px;
+    left: 50%;
+    background-color: white;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transform-origin: 0% 50%;
+    transform: rotate(-90deg);
+    top: 50%;
+    left: 50%;
+}
+
+.second-hand {
+    width: 49%;
+    height: 2px;
+    top: calc(50% + 2px);
+    background-color: red;
+    z-index: 10;
+    transition: 0.05s cubic-bezier(.5,2.07,.1,-0.16);
+}
+
+.minute-hand {
+    width: 49%;
+    height: 10px;
+}
+
+.hour-hand {
+    width: 35%;
+    height: 10px;
+}
+
+
+.center {
+    position: absolute;
+    z-index: -1;
+    background-color: white;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    top: 50%;
+    left: calc(50% - 5px);
+}
+
+/* Digital clock styling*/
+
+.digclock {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    width: 800px;
+    min-width: 400px;
+    height: 250px;
+    font-family: "Digital 7", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #222;
+    border: 5px solid white;
+    border-radius: 10px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    height: inherit;
+    width: 100%;
+    padding: 10px;
+}
+
+.hour-container, .min-container {
+    color: white;
+    font-size: 10rem;
+}
+
+.sec-container {
+    color: red;
+    font-size: 10rem;
+}
+
+
+.separator {
+    width: 50px;
+    position: relative;
+}
+
+.colon {
+    color: white;
+    font-size: 15rem; 
+}
+
+@media screen and (max-width: 600px) {
+
+    html, body {
+        min-width: 250px;
+    }
+
+    .analog-clock {
+        width: 300px;
+        height: 300px;
+    }
+
+    .digclock {
+        width: 300px;
+        height: 150px;
+    }
+
+    .hour-container, .min-container,.sec-container {
+        font-size: 6rem;;
+    }
+    
+    .colon {
+        font-size: 8rem; 
+    }
+}
+    
