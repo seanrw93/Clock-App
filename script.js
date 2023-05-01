@@ -21,12 +21,13 @@ const getTime = () => {
     const hours = currentDate.getHours()
 
 
-    switchBtnDiv.style.setProperty('--after-content', `"${minutes}"`)
+    switchBtnDiv.style.setProperty('--after-content', `"${minutes.toString().padStart(2, "0")}"`)
 
 
     if (anaClock.style.display !== "none") {
 
         const secondDegrees = (((seconds / 60) * 360) - 90) 
+        seconds === 0 ? secHand.style.transition = "unset" : secHand.style.transition = "all 0.05s"
         secHand.style.transform = `rotate(${secondDegrees}deg)`
 
         const minuteDegrees = (((minutes + (seconds / 60)) / 60 * 360) - 90)
